@@ -45,7 +45,7 @@ if uploaded_file:
     file_bytes = np.asarray(bytearray(uploaded_file.read()), dtype=np.uint8)
     image = cv2.imdecode(file_bytes, 1)
     image_rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-    st.image(image_rgb, caption="Original Image", use_column_width=True)
+    st.image(image_rgb, caption="Original Image", use_container_width=True)
 
     # Resize and normalize
     input_img = cv2.resize(image_rgb, (32, 32)).astype(np.float32) / 255.0
@@ -66,7 +66,7 @@ if uploaded_file:
             enhanced_img_uint8 = (enhanced_img * 255).astype("uint8")
 
             st.session_state.enhanced_image = enhanced_img_uint8  # Store in session state
-            st.image(enhanced_img_uint8, caption="Enhanced Image", use_column_width=True)
+            st.image(enhanced_img_uint8, caption="Enhanced Image", use_container_width=True)
             st.success("Image enhancement complete!")
 
     # Check if enhanced image exists in session state
